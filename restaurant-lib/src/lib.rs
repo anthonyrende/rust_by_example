@@ -5,6 +5,12 @@ use std::fmt;
 // use std::io;
 use std::io::Result as IoResult;
 
+// nested path
+use std::{cmp::Ordering, io};
+
+// glob operator to bring in all public items
+use std::collections::*;
+
 fn function1() -> fmt::Result {
     // --snip--
 }
@@ -52,7 +58,10 @@ mod front_of_hose {
 }
 
 // e can create a shortcut to a path with the use keyword once, and then use the shorter name everywhere else in the scope.
-use crate::front_of_hose::hosting;
+// use crate::front_of_hose::hosting;
+
+//  This technique is called re-exporting because we’re bringing an item into scope but also making that item available for others to bring into their scope.
+pub use crate::front_of_hose::hosting;
 
 pub fn eat_at_restaurant() {
     // using the shortcut
