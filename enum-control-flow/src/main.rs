@@ -23,7 +23,20 @@ fn main() {
     let six = plus_one(five);
     let none = plus_one(None);
     println!("Plus one returns {:?}", six);
+
+    let dice_roll = 9;
+    match dice_roll {
+        3 => do_something(),
+        7 => do_something_else(),
+        // Matches must be exhaustive so this underscore is a catch-all for every other roll
+        // _ => reroll(),
+        _ => (),
+    }
 }
+
+fn do_something() {}
+fn do_something_else() {}
+fn reroll() {}
 
 fn value_in_cents(coin: Coin) -> u8 {
     match coin {
