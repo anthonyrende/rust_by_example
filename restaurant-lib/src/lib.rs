@@ -51,3 +51,15 @@ crate
          └── take_payment
 
  */
+
+fn deliver_order() {}
+
+mod back_of_house {
+    fn fix_incorrect_order() {
+        cook_order();
+        //  we can use super to go to the parent module of back_of_house (which is crate the root in his case) then to deliver order
+        super::deliver_order();
+    }
+
+    fn cook_order() {}
+}
