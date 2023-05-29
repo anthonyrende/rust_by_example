@@ -1,3 +1,23 @@
+//  Bringing HashMap into scope in an idiomatic way
+use std::collections::HashMap;
+// The exception to this idiom is if we’re bringing two items with the same name into scope with use
+use std::fmt;
+// use std::io;
+use std::io::Result as IoResult;
+
+fn function1() -> fmt::Result {
+    // --snip--
+}
+
+fn function2() -> IoResult<()> {
+    // --snip--
+}
+
+fn main() {
+    let mut map = HashMap::new();
+    map.insert(1, 2);
+}
+
 pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
@@ -31,7 +51,12 @@ mod front_of_hose {
     }
 }
 
+// e can create a shortcut to a path with the use keyword once, and then use the shorter name everywhere else in the scope.
+use crate::front_of_hose::hosting;
+
 pub fn eat_at_restaurant() {
+    // using the shortcut
+    hosting::add_to_waitlist();
     // Absolute path
     crate::front_of_hose::hosting::add_to_waitlist();
 
