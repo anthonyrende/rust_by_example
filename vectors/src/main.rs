@@ -21,9 +21,16 @@ fn main() {
         None => (),
     }
 
-    let first = &v[0];
-
-    // v.push(6); <-- wont complie because you can’t have mutable and immutable references in the same scope
-
+    // let first = &v[0];
+    // v.push(6);                       <-- wont complie because you can’t have mutable and immutable references in the same scope
     // println!("The first element is: {first}");
+
+    for i in &v {
+        println!("Looping {i}");
+    }
+    for i in &mut v {
+        // To change the value that the mutable reference refers to, we have to use the * dereference
+        *i += 50;
+    }
+    println!("Added 50 to Vec: {:?}", v);
 }
