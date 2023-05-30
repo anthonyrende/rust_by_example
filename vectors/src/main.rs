@@ -1,3 +1,10 @@
+#[derive(Debug)]
+enum SpreadsheetCell {
+    Int(i32),
+    Float(f64),
+    Text(String),
+}
+
 fn main() {
     // Rust can infer the type because of the initial i32 values
     let v1 = vec![1, 2, 3];
@@ -33,4 +40,13 @@ fn main() {
         *i += 50;
     }
     println!("Added 50 to Vec: {:?}", v);
+
+    // Vectors can only store values that are the same type, so when we need one type to represent elements of different types, we can define and use an enum!
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Float(6.6),
+        SpreadsheetCell::Text(String::from("blue")),
+    ];
+
+    println!("Spreadsheet enum vec: {:?}", row);
 }
