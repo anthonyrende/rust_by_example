@@ -11,13 +11,13 @@ use std::{cmp::Ordering, io};
 // glob operator to bring in all public items
 use std::collections::*;
 
-fn function1() -> fmt::Result {
-    // --snip--
-}
+// fn function1() -> fmt::Result {
+//     // --snip--
+// }
 
-fn function2() -> IoResult<()> {
-    // --snip--
-}
+// fn function2() -> IoResult<()> {
+//     // --snip--
+// }
 
 fn main() {
     let mut map = HashMap::new();
@@ -40,37 +40,21 @@ mod tests {
 }
 
 // We define a module with the mod keyword followed by the name of the module
-mod front_of_hose {
-    // . Inside modules, we can place other modules, as in this case with the modules hosting and serving
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-
-        fn seat_at_table() {}
-    }
-
-    mod serving {
-        fn take_order() {}
-
-        fn serve_order() {}
-
-        fn take_payment() {}
-    }
-}
-
+mod front_of_house;
 // e can create a shortcut to a path with the use keyword once, and then use the shorter name everywhere else in the scope.
-// use crate::front_of_hose::hosting;
+// use crate::front_of_house::hosting;
 
 //  This technique is called re-exporting because we’re bringing an item into scope but also making that item available for others to bring into their scope.
-pub use crate::front_of_hose::hosting;
+pub use crate::front_of_house::hosting;
 
 pub fn eat_at_restaurant() {
     // using the shortcut
     hosting::add_to_waitlist();
     // Absolute path
-    crate::front_of_hose::hosting::add_to_waitlist();
+    crate::front_of_house::hosting::add_to_waitlist();
 
     // Relative path
-    front_of_hose::hosting::add_to_waitlist();
+    // front_of_house::hosting::add_to_waitlist();
 
     // Order a breakfast in the summer with Rye toast
     let mut meal = back_of_house::Breakfast::summer("Rye");

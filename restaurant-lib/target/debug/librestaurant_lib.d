@@ -1,1 +1,1 @@
-/home/ant/code/rust/rust-by-exmaple/restaurant-lib/target/debug/librestaurant_lib.rlib: /home/ant/code/rust/rust-by-exmaple/restaurant-lib/src/lib.rs
+/home/ant/code/rust/rust-by-exmaple/restaurant-lib/target/debug/librestaurant_lib.rlib: /home/ant/code/rust/rust-by-exmaple/restaurant-lib/src/front_of_house.rs /home/ant/code/rust/rust-by-exmaple/restaurant-lib/src/lib.rs
