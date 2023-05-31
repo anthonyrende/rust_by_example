@@ -48,4 +48,16 @@ fn main() {
     let s3 = String::from("toe");
 
     let s = format!("{s1}-{s2}-{s3}");
+
+    let hello = "Здравствуйте";
+
+    // you can use [] with a range to create a string slice containing particular bytes:
+    let s = &hello[0..4];
+
+    println!("s: {}", s);
+
+    // iterating over strings
+    for c in "Зд".chars() {
+        println!("{c}");
+    }
 }
