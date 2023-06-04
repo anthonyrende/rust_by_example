@@ -63,3 +63,26 @@ fn read_username_from_file() -> Result<String, io::Error> {
     use a default username, or look up the username from somewhere other than a file, for example
      */
 }
+
+
+
+// A Shortcut for Propagating Errors: the ? Operator
+
+// The ? placed after a Result value is defined to work in almost the same way as the match
+// If the value of the Result is an Ok, the value inside the Ok will get returned
+// If the value is an Err, the Err will be returned from the whole function,
+//  as if we had used the return keyword so the error value gets propagated to the calling code.
+fn _read_username_from_file() -> Result<String, io::Error> {
+    // let mut username_file = File::open("hello.txt")?;
+    // let mut username = String::new();
+    // username_file.read_to_string(&mut username)?;
+    // Ok(username)
+
+// The ? operator eliminates a lot of boilerplate and makes this function’s implementation simpler.
+    let mut username = String::new();
+
+    //  we’re only allowed to use the ? operator in a function that returns Result, Option, or another type that implements FromResidual.
+    File::open("hello.txt")?.read_to_string(&mut username)?;
+
+    Ok(username)
+}
