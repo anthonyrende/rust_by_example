@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::ErrorKind;
+use std::io::{self, ErrorKind, Read};
 
 fn main() {
     let greeting_file_result = File::open("hello.txt");
@@ -29,4 +29,37 @@ fn main() {
     let greeting_file = File::open("hello.txt")
         .expect("hello.txt should be included in this project");
 
+}
+
+// Propagating Errors
+
+// the function is returning a value of the type Result<T, E> - the generic parameter T is concrete type String, 
+// and the generic type E has been filled in with the concrete type io::Error.
+fn read_username_from_file() -> Result<String, io::Error> {
+    let username_file_result = File::open("hello.txt");
+
+    // we handle the Result value from "user_name_file_result" with a match
+    let mut username_file = match username_file_result {
+        // If Ok, the file handle in the pattern variable {file} becomes the value in the mutable variable {username_file}
+        Ok(file) => file,
+        //  In the Err case, instead of calling panic!, we use the return keyword to return early out of the function entirely,
+        // and pass the error value from File::open
+        Err(e) => return Err(e),
+    };
+
+    let mut username = String::new();
+
+    // read the contents of the file into username
+    match username_file.read_to_string(&mut username) {
+        // The read_to_string method also returns a Result because it might fail
+        Ok(_) => Ok(username),
+        // we don’t need to explicitly say return, because this is the last expression in the function.
+        Err(e) => Err(e),
+    }
+
+    /*
+    The code that calls this code will then handle getting either an Ok value that contains a username or an Err value that contains an io::Error. 
+    It’s up to the calling code to decide what to do with those values. If the calling code gets an Err value, it could call panic! and crash the program,
+    use a default username, or look up the username from somewhere other than a file, for example
+     */
 }
