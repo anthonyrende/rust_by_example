@@ -22,5 +22,5 @@ fn main() {
         retweet: true,
     };
 
-    println!("{:#?}", tweet);
+    println!("1 New tweet {:#?}", tweet);
 }
