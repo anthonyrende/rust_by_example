@@ -15,12 +15,24 @@ fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
 
     largest
 }
+
 #[derive(Debug)]
+//  Point<T, U> generic over two types so that x and y can be values of different types
 struct Point<T, U> {
     x: T,
     y: U,
 }
 
+// We can define enums to hold generic data types in their variants
+enum Option<T> {
+    Some(T),
+    None,
+}
+// When you recognize situations in your code with multiple struct or enum definitions that differ only in the types of the values they hold, you can avoid duplication by using generic types instead.
+enum Result<T,E> {
+    Ok(T),
+    Err(E),
+}
 fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
