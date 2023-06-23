@@ -36,6 +36,5 @@ fn first_word(s: &str) -> &str {
         }
     }
 
-    // s.len()
-    &s[..]
+    &s[..] // return a slice of the whole string
 }
