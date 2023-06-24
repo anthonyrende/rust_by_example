@@ -33,5 +33,17 @@ fn main() {
 
     println!("{:#?}",article.summarize());
 
-    print!("notify!: {:#?}", notify(&tweet.content));
+    print!("notify!: {:#?}", notify(&tweet));
+
+    returns_summarizable();
+}
+
+
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("new_user2"),
+        content: String::from("content herer2"),
+        reply: false,
+        retweet: true,
+    }
 }
