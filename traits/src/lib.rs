@@ -31,3 +31,8 @@ impl Summary for Tweet {
         String::from("(Read more...)")
     }
 }
+
+// Instead of a concrete type for the item parameter, we specify the impl keyword and the trait name. This parameter accepts any type that implements the specified trait.
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}

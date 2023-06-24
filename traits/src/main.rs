@@ -12,7 +12,7 @@
 //     fn summarize(&self) -> String;
 // }
 
-use::traits::{Summary, Tweet, NewsArticle};
+use::traits::{Summary, Tweet, NewsArticle, notify};
 
 fn main() {
     let tweet = Tweet {
@@ -32,4 +32,6 @@ fn main() {
     };
 
     println!("{:#?}",article.summarize());
+
+    print!("notify!: {:#?}", notify(&tweet.content));
 }
