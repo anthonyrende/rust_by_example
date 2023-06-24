@@ -12,7 +12,7 @@
 //     fn summarize(&self) -> String;
 // }
 
-use::traits::{Summary, Tweet};
+use::traits::{Summary, Tweet, NewsArticle};
 
 fn main() {
     let tweet = Tweet {
@@ -22,5 +22,14 @@ fn main() {
         retweet: true,
     };
 
-    println!("1 New tweet {:#?}", tweet);
+    println!("1 New tweet {:#?}", tweet.summarize());
+
+    let article = NewsArticle {
+        headline: String::from("new headline"),
+        location: String::from("New York"),
+        author: String::from("Anthony"),
+        content: String::from("content here")
+    };
+
+    println!("{:#?}",article.summarize());
 }
